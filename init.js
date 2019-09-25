@@ -111,7 +111,7 @@ dtps.authenticate = function (cb) {
         var params = dtps.getParams();
         window.history.replaceState(null, null, window.location.pathname);
         if (params.code && (params.state == window.localStorage.authState)) {
-            //get tokens
+            //Get tokens
             dtps.webReq("backend", "/login/oauth2/token?client_id=" + dtps.auth.client_id + "&redirect_uri=" + dtps.auth.uri + "&grant_type=authorization_code&code=" + params.code, function (res) {
                 var data = JSON.parse(res);
                 window.localStorage.setItem("access_token", data.access_token);
